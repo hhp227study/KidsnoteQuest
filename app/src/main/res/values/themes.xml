@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.KidsnoteQuest" parent="Base.Theme.KidsnoteQuest" />
+
+    <style name="Base.Theme.KidsnoteQuest.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 </resources>
