@@ -1,13 +1,21 @@
 package com.hhp227.kidsnotequest.api
 
+import com.hhp227.kidsnotequest.data.Image
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface MainService {
+    @GET("v2/list")
+    suspend fun searchImages(
+        @Query("page") page: Int,
+        @Query("limit") limit: Int
+    ): List<Image>
 
     companion object {
         private val Json = Json {

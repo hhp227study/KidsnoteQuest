@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.hhp227.kidsnotequest.adapters.ImagePagingAdapter
 import com.hhp227.kidsnotequest.databinding.FragmentMainBinding
 import com.hhp227.kidsnotequest.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,9 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = mainViewModel
+        binding.contentMain.recyclerView.adapter = ImagePagingAdapter()
         return binding.root
     }
 
