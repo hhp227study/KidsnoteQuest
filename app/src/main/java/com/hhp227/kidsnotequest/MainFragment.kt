@@ -4,8 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.appbar.MaterialToolbar
+import com.hhp227.kidsnotequest.adapters.ImageLoadStateAdapter
 import com.hhp227.kidsnotequest.adapters.ImagePagingAdapter
 import com.hhp227.kidsnotequest.databinding.FragmentMainBinding
 import com.hhp227.kidsnotequest.viewmodel.MainViewModel
@@ -25,11 +30,24 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = mainViewModel
-        binding.contentMain.recyclerView.adapter = ImagePagingAdapter()
+        binding.contentMain.recyclerView.adapter = ImagePagingAdapter()//.withLoadStateFooter(ImageLoadStateAdapter())
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setNavAppbar(binding.toolbar)
+        with(binding.contentMain) {
+            swipeRefreshLayout.setOnRefreshListener {
+                swipeRefreshLayout.isRefreshing = false
+
+                (recyclerView.adapter as? ImagePagingAdapter)?.refresh()
+            }
+        }
+    }
+
+    private fun setNavAppbar(toolbar: MaterialToolbar) {
+        toolbar.setupWithNavController(findNavController())
+        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
     }
 }

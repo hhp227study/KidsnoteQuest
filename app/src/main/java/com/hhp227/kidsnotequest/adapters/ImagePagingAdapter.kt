@@ -14,7 +14,13 @@ class ImagePagingAdapter : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolde
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        return ItemHolder(ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ItemHolder(
+            ItemImageBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     inner class ItemHolder(
