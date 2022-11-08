@@ -14,7 +14,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.hhp227.kidsnotequest.adapters.ImageLoadStateAdapter
 import com.hhp227.kidsnotequest.adapters.ImagePagingAdapter
 import com.hhp227.kidsnotequest.databinding.FragmentMainBinding
-import com.hhp227.kidsnotequest.viewmodel.MainViewModel
+import com.hhp227.kidsnotequest.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

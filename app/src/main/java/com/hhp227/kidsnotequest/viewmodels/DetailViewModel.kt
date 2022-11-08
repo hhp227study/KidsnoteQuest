@@ -1,4 +1,4 @@
-package com.hhp227.kidsnotequest.viewmodel
+package com.hhp227.kidsnotequest.viewmodels
 
 import androidx.lifecycle.ViewModel
 

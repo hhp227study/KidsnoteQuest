@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hhp227.kidsnotequest.viewmodel.MainViewModel" />
+            type="com.hhp227.kidsnotequest.viewmodels.MainViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -1,13 +1,11 @@
 package com.hhp227.kidsnotequest.adapters
 
-import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import coil.load
 import com.hhp227.kidsnotequest.data.Image
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,10 +14,11 @@ import kotlinx.coroutines.launch
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
-        Glide.with(view.context)
-            .load(imageUrl)
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .into(view)
+        view.load(imageUrl) {
+            crossfade(150)
+            //placeholder(R.drawable.ic_launcher_background)
+            //error(R.drawable.ic_launcher_background)
+        }
     }
 }
 

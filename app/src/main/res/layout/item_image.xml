@@ -40,7 +40,18 @@
                     android:contentDescription="TODO"
                     app:imageFromUrl="@{image.downloadUrl}" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{image.author}"
+                    android:textSize="18dp"
+                    android:textColor="#FFFFFF"
+                    android:padding="16dp"
+                    android:gravity="bottom|end" />
+
             </androidx.cardview.widget.CardView>
+
+
 
         </RelativeLayout>
 
