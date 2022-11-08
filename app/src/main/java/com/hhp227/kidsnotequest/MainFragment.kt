@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.material.appbar.MaterialToolbar
 import com.hhp227.kidsnotequest.adapters.ImageLoadStateAdapter
 import com.hhp227.kidsnotequest.adapters.ImagePagingAdapter
@@ -30,7 +31,7 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = mainViewModel
-        binding.contentMain.recyclerView.adapter = ImagePagingAdapter()//.withLoadStateFooter(ImageLoadStateAdapter())
+        binding.contentMain.recyclerView.adapter = ImagePagingAdapter().withLoadStateFooter(ImageLoadStateAdapter())
         return binding.root
     }
 
@@ -39,9 +40,12 @@ class MainFragment : Fragment() {
         setNavAppbar(binding.toolbar)
         with(binding.contentMain) {
             swipeRefreshLayout.setOnRefreshListener {
+                val adapter = recyclerView.adapter
                 swipeRefreshLayout.isRefreshing = false
 
-                (recyclerView.adapter as? ImagePagingAdapter)?.refresh()
+                if (adapter is ConcatAdapter) {
+                    (adapter.adapters.first() as? ImagePagingAdapter)?.refresh()
+                }
             }
         }
     }

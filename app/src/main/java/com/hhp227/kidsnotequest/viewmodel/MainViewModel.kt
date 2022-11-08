@@ -15,5 +15,5 @@ class MainViewModel @Inject constructor(
     private val repository: MainRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    val data: LiveData<PagingData<Image>> get() = repository.searchImage().asLiveData()
+    val data: LiveData<PagingData<Image>> get() = repository.fetchImages().asLiveData()
 }

@@ -8,8 +8,8 @@ import javax.inject.Singleton
 
 @Singleton
 class MainRepository @Inject constructor(private val apiService: MainService) {
-    fun searchImage() = Pager(
-        config = PagingConfig(100, enablePlaceholders = false),
+    fun fetchImages() = Pager(
+        config = PagingConfig(10, enablePlaceholders = false),
         pagingSourceFactory = fun() = ImagePagingSource(apiService)
     ).flow
 }

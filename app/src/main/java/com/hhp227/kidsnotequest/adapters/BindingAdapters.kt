@@ -1,8 +1,10 @@
 package com.hhp227.kidsnotequest.adapters
 
+import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.paging.PagingData
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -24,6 +26,6 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
 @BindingAdapter("submitData")
 fun submitData(v: RecyclerView, list: PagingData<Image>) {
     CoroutineScope(Dispatchers.Main).launch {
-        (v.adapter as? ImagePagingAdapter)?.submitData(list)
+        ((v.adapter as? ConcatAdapter)?.adapters?.first() as? ImagePagingAdapter)?.submitData(list)
     }
 }
