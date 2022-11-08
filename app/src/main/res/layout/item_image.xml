@@ -7,11 +7,15 @@
         <variable
             name="image"
             type="com.hhp227.kidsnotequest.data.Image" />
+        <variable
+            name="onItemClickListener"
+            type="kotlin.jvm.functions.Function1" />
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> onItemClickListener.invoke(image.id)}">
 
         <RelativeLayout
             android:layout_width="match_parent"

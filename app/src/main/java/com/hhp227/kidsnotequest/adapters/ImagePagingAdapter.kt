@@ -1,14 +1,16 @@
 package com.hhp227.kidsnotequest.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hhp227.kidsnotequest.data.Image
 import com.hhp227.kidsnotequest.databinding.ItemImageBinding
 
-class ImagePagingAdapter : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolder>(ImageDiffCallback()) {
+class ImagePagingAdapter(private val onItemClickListener: (String?) -> Unit) : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolder>(ImageDiffCallback()) {
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         holder.bind(getItem(position))
     }
@@ -28,6 +30,7 @@ class ImagePagingAdapter : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolde
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Image?) {
             binding.image = item
+            binding.onItemClickListener = onItemClickListener
 
             binding.executePendingBindings()
         }

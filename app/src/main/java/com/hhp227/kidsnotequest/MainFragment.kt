@@ -31,7 +31,11 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = mainViewModel
-        binding.contentMain.recyclerView.adapter = ImagePagingAdapter().withLoadStateFooter(ImageLoadStateAdapter())
+        binding.contentMain.recyclerView.adapter = ImagePagingAdapter {
+            val direction = MainFragmentDirections.actionMainFragmentToDetailFragment(it ?: "")
+
+            findNavController().navigate(direction)
+        }.withLoadStateFooter(ImageLoadStateAdapter())
         return binding.root
     }
 
