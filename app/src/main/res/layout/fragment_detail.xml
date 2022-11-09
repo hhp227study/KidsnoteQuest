@@ -39,41 +39,140 @@
                 android:padding="16dp">
 
                 <ImageView
-                    android:id="@+id/image_photo"
+                    android:id="@+id/iv_photo"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:src="@drawable/ic_launcher_background"
-                    app:layout_constraintBottom_toTopOf="@id/textview_second"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@id/ll_second"
                     app:layout_constraintDimensionRatio="16:9"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:imageFromUrl="@{viewModel.image.downloadUrl}"/>
 
                 <LinearLayout
+                    android:id="@+id/ll_second"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/image_photo"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/iv_photo"
                     android:orientation="vertical">
 
-                    <com.hhp227.kidsnotequest.views.DescriptionView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
-                    <com.hhp227.kidsnotequest.views.DescriptionView
+                        <TextView
+                            android:id="@+id/tv_author_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#757575"
+                            android:textStyle="bold"
+                            android:text="• Author: "
+                            tools:text="• 소개 :" />
+
+                        <TextView
+                            android:id="@+id/tv_author_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#616161"
+                            android:textStyle="bold"
+                            android:text="@{viewModel.image.author}"
+                            tools:text="Description" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_width_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#757575"
+                            android:textStyle="bold"
+                            android:text="• Width: "
+                            tools:text="• 소개 :" />
+
+                        <TextView
+                            android:id="@+id/tv_width_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#616161"
+                            android:textStyle="bold"
+                            android:text="@{String.valueOf(viewModel.image.width)}"
+                            tools:text="Description" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_height_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#757575"
+                            android:textStyle="bold"
+                            android:text="• Height: "
+                            tools:text="• 소개 :" />
+
+                        <TextView
+                            android:id="@+id/tv_height_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#616161"
+                            android:textStyle="bold"
+                            android:text="@{String.valueOf(viewModel.image.height)}"
+                            tools:text="Description" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_url_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#757575"
+                            android:textStyle="bold"
+                            android:text="• Url: "
+                            tools:text="• 소개 :" />
+
+                        <TextView
+                            android:id="@+id/tv_url_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textColor="#616161"
+                            android:textStyle="bold"
+                            android:text="@{viewModel.image.url}"
+                            tools:text="Description" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="좋아요"
+                        app:icon="@{viewModel.image.favorite ? @drawable/ic_baseline_favorite_24 : @drawable/ic_baseline_favorite_border_24}"
+                        app:iconGravity="textStart" />
 
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textview_second"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/lorem_ipsum"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/image_photo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

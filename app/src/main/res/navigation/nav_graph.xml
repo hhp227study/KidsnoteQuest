@@ -21,7 +21,15 @@
         android:label="@string/detail_fragment_label"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:name="id"
-            app:argType="string" />
+            android:name="image"
+            android:defaultValue="@null"
+            app:argType="com.hhp227.kidsnotequest.data.Image"
+            app:nullable="true" />
+        <argument
+            android:name="array"
+            android:defaultValue="@null"
+            app:argType="com.hhp227.kidsnotequest.data.Image[]"
+            app:nullable="true" />
+
     </fragment>
 </navigation>
