@@ -26,6 +26,10 @@
             app:argType="com.hhp227.kidsnotequest.data.Image"
             app:nullable="true" />
         <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
             android:name="array"
             android:defaultValue="@null"
             app:argType="com.hhp227.kidsnotequest.data.Image[]"

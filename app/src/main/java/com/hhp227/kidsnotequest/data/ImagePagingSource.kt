@@ -14,7 +14,7 @@ class ImagePagingSource(private val mainService: MainService) : PagingSource<Int
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Image> {
-        val page = params.key ?: 0
+        val page = params.key ?: 1
         return try {
             delay(2000)
             LoadResult.Page(

@@ -168,7 +168,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="좋아요"
+                        android:text="@string/favorite"
+                        android:onClick="@{() -> viewModel.onFavoriteClick()}"
                         app:icon="@{viewModel.image.favorite ? @drawable/ic_baseline_favorite_24 : @drawable/ic_baseline_favorite_border_24}"
                         app:iconGravity="textStart" />
 

@@ -14,7 +14,16 @@ class DetailViewModel @Inject constructor(
 ) : ViewModel() {
     val image: LiveData<Image> get() = savedStateHandle.getLiveData("image")
 
+    fun onFavoriteClick() {
+        val image = savedStateHandle.get<Image>("image")?.apply {
+            isFavorite = !isFavorite
+        }
+        savedStateHandle["image"] = image
+    }
+
     init {
+        val pos = savedStateHandle.get<Int>("position")
+        Log.e("TEST", "test: $pos")
         savedStateHandle.get<Array<Image>?>("array")?.also {
             Log.e("TEST", "image: ${it.toList()}")
         }

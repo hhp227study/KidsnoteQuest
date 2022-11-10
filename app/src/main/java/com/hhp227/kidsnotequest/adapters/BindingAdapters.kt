@@ -1,6 +1,8 @@
 package com.hhp227.kidsnotequest.adapters
 
+import android.view.View
 import android.widget.ImageView
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ConcatAdapter
@@ -24,9 +26,11 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
 }
 
 @BindingAdapter("submitData")
-fun submitData(v: RecyclerView, list: PagingData<Image>) {
-    CoroutineScope(Dispatchers.Main).launch {
-        ((v.adapter as? ConcatAdapter)?.adapters?.first() as? ImagePagingAdapter)?.submitData(list)
+fun submitData(v: RecyclerView, data: PagingData<Image>?) {
+    if (data != null && data != PagingData.empty<Image>()) {
+        CoroutineScope(Dispatchers.Main).launch {
+            ((v.adapter as? ConcatAdapter)?.adapters?.first() as? ImagePagingAdapter)?.submitData(data)
+        }
     }
 }
 
@@ -37,6 +41,11 @@ fun bindPayload(v: RecyclerView, payload: Image?) {
     (concatAdapter?.adapters?.first() as? ImagePagingAdapter)?.also { adapter ->
         payload?.also(adapter::updateFavorite)
     }
+}
+
+@BindingAdapter("isEmpty")
+fun isEmpty(v: View, data: PagingData<Image>?) {
+    v.isVisible = data == null || data == PagingData.empty<Image>()
 }
 /*
 @BindingAdapter(value = ["title", "description"])

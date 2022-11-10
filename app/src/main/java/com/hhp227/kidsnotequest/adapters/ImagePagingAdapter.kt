@@ -62,6 +62,7 @@ class ImagePagingAdapter : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolde
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Image?) {
             binding.image = item
+            binding.position = bindingAdapterPosition
             binding.onItemClickListener = onItemClickListener
 
             binding.executePendingBindings()
@@ -69,7 +70,7 @@ class ImagePagingAdapter : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolde
     }
 
     interface OnItemClickListener {
-        fun onItemClick(item: Image)
+        fun onItemClick(position: Int, item: Image)
 
         fun onLikeClick(item: Image)
     }

@@ -1,6 +1,7 @@
 package com.hhp227.kidsnotequest
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ class DetailFragment : Fragment() {
     ): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         binding.viewModel = detailViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
