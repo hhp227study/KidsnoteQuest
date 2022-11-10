@@ -4,8 +4,8 @@
     <!-- Strings used for fragments for navigation -->
     <string name="main_fragment_label">메인 화면</string>
     <string name="detail_fragment_label">상세 화면</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">다음이미지</string>
+    <string name="previous">이전이미지</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

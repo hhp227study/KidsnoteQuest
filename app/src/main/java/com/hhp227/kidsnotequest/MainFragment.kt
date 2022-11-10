@@ -103,6 +103,9 @@ class MainFragment : Fragment() {
             .setMessage(getString(R.string.connection_error_message))
             .setPositiveButton(getString(R.string.connection_error_positive_button)) { _, _ ->
                 networkConnectionCheck()
+                if (adapter.snapshot().isEmpty()) {
+                    adapter.refresh()
+                }
             }
             .setNegativeButton(getString(R.string.connection_error_negative_button)) { _, _ ->
                 exitProcess(0)

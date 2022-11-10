@@ -1,10 +1,12 @@
 package com.hhp227.kidsnotequest.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.hhp227.kidsnotequest.data.Image
+import com.hhp227.kidsnotequest.utilities.ARRAY_KEY
+import com.hhp227.kidsnotequest.utilities.IMAGE_KEY
+import com.hhp227.kidsnotequest.utilities.POSITION_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -12,20 +14,16 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    val image: LiveData<Image> get() = savedStateHandle.getLiveData("image")
+    val image: LiveData<Image> get() = savedStateHandle.getLiveData(IMAGE_KEY)
+
+    val currentPosition: LiveData<Int> get() = savedStateHandle.getLiveData(POSITION_KEY)
+
+    val array: LiveData<Array<Image>?> get() = savedStateHandle.getLiveData(ARRAY_KEY)
 
     fun onFavoriteClick() {
-        val image = savedStateHandle.get<Image>("image")?.apply {
-            isFavorite = !isFavorite
-        }
-        savedStateHandle["image"] = image
-    }
-
-    init {
-        val pos = savedStateHandle.get<Int>("position")
-        Log.e("TEST", "test: $pos")
-        savedStateHandle.get<Array<Image>?>("array")?.also {
-            Log.e("TEST", "image: ${it.toList()}")
+        if (savedStateHandle.contains(IMAGE_KEY)) {
+            val image = savedStateHandle.get<Image>(IMAGE_KEY)?.apply { isFavorite = !isFavorite }
+            savedStateHandle[IMAGE_KEY] = image
         }
     }
 }
