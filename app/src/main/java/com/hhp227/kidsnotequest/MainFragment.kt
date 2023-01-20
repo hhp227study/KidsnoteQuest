@@ -25,15 +25,17 @@ import com.hhp227.kidsnotequest.databinding.FragmentMainBinding
 import com.hhp227.kidsnotequest.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.system.exitProcess
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
+    @Inject
+    lateinit var adapter: ImagePagingAdapter
+
     private lateinit var binding: FragmentMainBinding
 
     private val mainViewModel: MainViewModel by viewModels()
-
-    private val adapter = ImagePagingAdapter()
 
     private val connectivityManager by lazy {
         requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

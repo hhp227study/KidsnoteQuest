@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hhp227.kidsnotequest.data.Image
 import com.hhp227.kidsnotequest.databinding.ItemImageBinding
+import javax.inject.Inject
 
-class ImagePagingAdapter : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolder>(ImageDiffCallback()) {
+class ImagePagingAdapter @Inject constructor() : PagingDataAdapter<Image, ImagePagingAdapter.ItemHolder>(ImageDiffCallback()) {
     private lateinit var onItemClickListener: OnItemClickListener
 
     val loadState: LiveData<CombinedLoadStates> get() = loadStateFlow.asLiveData()
